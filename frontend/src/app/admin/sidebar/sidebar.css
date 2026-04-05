@@ -1,0 +1,65 @@
+.sidebar {
+  width: 230px;
+  min-height: 100vh;
+  background-color: #1f8a5b; /* ✅ your common color */
+  color: white;
+  padding: 15px;
+}
+
+/* Profile */
+.profile-img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid white;
+}
+
+/* Links */
+.nav-link {
+  color: white;
+  padding: 10px;
+  margin-bottom: 8px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: 0.3s;
+  display: block;
+}
+
+.nav-link:hover {
+  background-color: white;
+  color: #1f8a5b;
+}
+
+/* Active link */
+.active {
+  background-color: white;
+  color: #1f8a5b !important;
+  font-weight: bold;
+}
+
+/* Logout button */
+.logout-btn {
+  background-color: white;
+  color: #1f8a5b;
+  font-weight: bold;
+  border-radius: 8px;
+}
+
+.logout-btn:hover {
+  background-color: #145c3a;
+  color: white;
+}
+
+
+.sidebar {
+  width: 250px;
+  min-height: 100vh;
+  background-color: #198754;
+  color: white;
+}
+
+.content {
+  background-color: #f5f5f5;
+  min-height: 100vh;
+}

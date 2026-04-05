@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row-box">
+
+    <!-- Cards -->
+    <div class="card-row">
+
+      <div class="card-box">
+        <h6>Accepted Contacts</h6>
+        <h2>{{acceptedCount}}</h2>
+      </div>
+
+      <div class="card-box">
+        <h6>New Requests</h6>
+        <h2>{{newRequests}}</h2>
+      </div>
+
+    </div>
+
+    <!-- Table -->
+    <table class="custom-table">
+      <tr>
+        <th>Sl.No</th>
+        <th>Name</th>
+        <th>Message</th>
+        <th>Updated At</th>
+      </tr>
+
+      <tr *ngFor="let c of contacts(); let i=index">
+        <td>{{i+1}}</td>
+        <td>{{c.name}}</td>
+        <td>{{c.message}}</td>
+        <td>{{c.updatedAt | date:'short'}}</td>
+      </tr>
+    </table>
+
+  </div>
+</div>

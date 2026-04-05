@@ -1,0 +1,17 @@
+<div class="container d-flex justify-content-center align-items-center vh-100">
+  <div class="card p-4 shadow" style="max-width: 400px; width: 100%;">
+    <h3 class="card-title text-center mb-3">Reset Your Password</h3>
+    <p class="text-center text-muted mb-4">Enter your email to receive a reset link.</p>
+
+    <form (ngSubmit)="sendLink()">
+      <div class="mb-3">
+        <label for="email" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="email" placeholder="your@email.com" [(ngModel)]="email"
+          name="email" required>
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100">Send Reset Link</button>
+    </form>
+
+  </div>
+</div>
