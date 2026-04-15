@@ -1,0 +1,59 @@
+<div class="w-100 d-flex justify-content-center align-items-center vh-100"
+    style="background: linear-gradient(to right, #1f8a5b, #2ecc71);">
+
+    <div class="card p-4 shadow" style="width: 380px; border-radius: 12px;">
+
+        <div class="text-center mb-3">
+            <h2 class="fw-bold mt-2" style="color:#1f8a5b;">Register</h2>
+        </div>
+
+        <form [formGroup]="registerForm" (ngSubmit)="register()">
+
+            <!-- NAME -->
+            <div class="mb-3">
+                <input type="text" formControlName="username" class="form-control" placeholder="Enter your name">
+            </div>
+
+            @if(registerForm.get("username")?.errors && registerForm.get("username")?.touched){
+            <div class="text-danger mb-2">Invalid Username</div>
+            }
+
+            <div class="mb-3">
+                <input type="email" formControlName="email" class="form-control" placeholder="Enter your email" (keydown)="blockSpaces($event)" >
+            </div>
+
+            @if(registerForm.get("email")?.errors && registerForm.get("email")?.touched){
+            <div class="text-danger mb-2">Invalid Email</div>
+            }
+
+            <!-- PASSWORD -->
+            <div class="mb-3 position-relative">
+                <input [type]="showPassword ? 'text' : 'password'" formControlName="password" class="form-control"
+                    placeholder="Enter password" (keydown)="blockSpaces($event)">
+
+                <span (click)="togglePassword()" class="position-absolute top-50 end-0 translate-middle-y me-3"
+                    style="cursor: pointer;">
+
+                    <i class="bi" [ngClass]="showPassword ? 'bi-eye-slash' : 'bi-eye'">
+                    </i>
+
+                </span>
+            </div>
+            @if(registerForm.get("password")?.errors && registerForm.get("password")?.touched){
+            <div class="text-danger mb-2">Password must be at least 6 characters</div>
+            }
+
+            <button type="submit" class="btn w-100 mt-2" style="background-color:#1f8a5b; color:white;">
+                Register
+            </button>
+
+        </form>
+
+        <div class="text-center mt-3">
+            <small>Already have an account?
+                <a [routerLink]="['/login']" style="color:#1f8a5b;">Login</a>
+            </small>
+        </div>
+
+    </div>
+</div>

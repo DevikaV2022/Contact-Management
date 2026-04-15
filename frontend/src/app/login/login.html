@@ -1,0 +1,77 @@
+<div class="w-100 d-flex justify-content-center align-items-center vh-100"
+    style="background: linear-gradient(to right, #1f8a5b, #2ecc71);">
+
+    <div class="card p-4 shadow" style="width: 350px; border-radius: 12px;">
+        <h2 class="text-center mb-3" style="color:#1f8a5b;">Welcome</h2>
+
+        <form [formGroup]="loginForm" (ngSubmit)="login()">
+
+            <div class="mb-3">
+                <input type="email"  (keydown)="blockSpaces($event)" formControlName="email" class="form-control" placeholder="Enter your email">
+            </div>
+
+            @if(loginForm.get("email")?.touched && loginForm.get("email")?.invalid){
+            <div class="text-danger mb-2">
+                @if(loginForm.get("email")?.errors?.['required']){
+                Email is required
+                }
+                @if(loginForm.get("email")?.errors?.['email']){
+                Invalid email format
+                }
+            </div>
+            }
+
+            <!-- PASSWORD -->
+            <div class="mb-3 position-relative">
+                <input [type]="showPassword ? 'text' : 'password'" formControlName="password" class="form-control"
+                    placeholder="Enter password" (keydown)="blockSpaces($event)">
+
+                <!-- Eye Icon -->
+                <span (click)="togglePassword()" class="position-absolute top-50 end-0 translate-middle-y me-3"
+                    style="cursor: pointer;">
+
+                    <i class="bi" [ngClass]="showPassword ? 'bi-eye-slash' : 'bi-eye'">
+                    </i>
+                </span>
+            </div>
+
+            @if(loginForm.get("password")?.errors && loginForm.get("password")?.touched){
+            <div class="text-danger mb-2">Invalid Password</div>
+            }
+
+            <!-- FORGOT PASSWORD -->
+            <div class="text-end mb-2">
+                <a routerLink="/forgot-password" style="cursor:pointer; font-size: 14px;">
+                    Forgot Password?
+                </a>
+            </div>
+
+            <!-- LOGIN BUTTON -->
+            <button class="btn w-100 mt-2" type="submit" [disabled]="loginForm.invalid"
+                style="background-color:#1f8a5b; color:white;">
+                Login
+            </button>
+
+            <div class="text-danger text-center mt-2" *ngIf="errorMessage">
+                {{ errorMessage }}
+            </div>
+
+            <div class="text-center mt-2" *ngIf="showRegisterBtn">
+                <button type="button" class="btn btn-outline-success btn-sm" (click)="goToRegister()">
+                    Go to Register
+                </button>
+            </div>
+            <!-- REGISTER LINK -->
+            <div class="text-center mt-3">
+                <small>
+                    Don't have an account?
+                    <a routerLink="/register" style="color:#1f8a5b; cursor:pointer;">
+                        Register
+                    </a>
+                </small>
+            </div>
+
+        </form>
+    </div>
+
+</div>

@@ -1,0 +1,67 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+.main-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 0px;
+}
+
+.header {
+  background: linear-gradient(to right, #1f8a5b, #2ecc71);
+  color: white;
+  height: 60px;
+  width: 100%;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.logout-btn {
+  background-color: white;
+  color: #1f8a5b;
+  border: none;
+  padding: 5px 10px;
+  font-size: 0.9rem;
+}
+
+.logout-btn:hover {
+  background-color: #e6f5ee;
+}
+
+.content {
+  flex: 1;
+}
+
+.container {
+  flex: 1;
+}
+
+.welcome-text {
+  color: #1f8a5b;
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.sub-text {
+  color: gray;
+  font-size: 1rem;
+}
+
+.card {
+  margin-bottom: 1rem;
+}
+
+.footer {
+  background: linear-gradient(to right, #1f8a5b, #2ecc71);
+  color: white;
+  padding: 12px;
+  font-size: 0.9rem;
+  margin-top: auto;
+}

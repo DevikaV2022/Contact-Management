@@ -1,0 +1,84 @@
+<div class="container-fluid">
+  <div class="row">
+
+    <div class="col-lg-10">
+      <table class="table table-bordered table-hover">
+        <thead class="table-light">
+          <tr>
+            <th>Sl.No</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Message</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+
+          <tbody>
+          @for (c of contacts(); track c._id; let i = $index) {
+          <tr>
+            <td>{{ i + 1 }}</td>
+
+            <td>
+              <button type="button" class="btn btn-link p-0"
+                      (click)="openModal(c)">
+                {{ c.name }}
+              </button>
+            </td>
+
+            <td>{{ c.email }}</td>
+            <td>{{ c.phone }}</td>
+            <td>{{ c.message }}</td>
+
+            <td>
+              <button class="btn btn-danger btn-sm"
+                      (click)="deleteContact(c._id)">
+                Delete
+              </button>
+            </td>
+          </tr>
+          } @empty {
+          <tr>
+            <td colspan="6" class="text-center">No contacts found</td>
+          </tr>
+          }
+        </tbody>
+
+      </table>
+    </div>
+  </div>
+</div>
+
+@if (selectedContact()) {
+  <div class="modal show"
+       style="display: block; background: rgba(0,0,0,0.5); z-index: 1050;"
+       role="dialog">
+
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h5 class="modal-title">Contact Details</h5>
+          <button type="button" class="btn-close"
+                  (click)="closeModal()"></button>
+        </div>
+
+        <div class="modal-body">
+          <p><strong>Name:</strong> {{ selectedContact().name }}</p>
+          <p><strong>Email:</strong> {{ selectedContact().email }}</p>
+          <p><strong>Phone:</strong> {{ selectedContact().phone }}</p>
+          <p><strong>Message:</strong> {{ selectedContact().message }}</p>
+        </div>
+
+        <div class="modal-footer">
+          <button class="btn btn-secondary"
+                  (click)="closeModal()">
+            Close
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+}

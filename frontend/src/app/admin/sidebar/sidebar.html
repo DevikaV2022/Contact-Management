@@ -1,0 +1,43 @@
+<div class="d-flex">
+
+  <!--  SIDEBAR -->
+  <div class="sidebar d-flex flex-column">
+
+    <!-- Profile Section -->
+    <div class="profile text-center">
+      <img src="https://i.pinimg.com/736x/b4/1f/f4/b41ff478e42e31fd71584d9dae338ffa.jpg"
+           alt="admin-profile"
+           class="profile-img">
+      <h5 class="mt-2">Admin</h5>
+    </div>
+
+    <!-- Menu -->
+    <nav class="nav flex-column mt-4">
+
+      <a routerLink="/admin/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link">
+        Dashboard
+      </a>
+
+      <a routerLink="/admin/contact-list" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link">
+        Contact List
+      </a>
+
+      <a routerLink="/admin/manage-contact" routerLinkActive="active"  [routerLinkActiveOptions]="{ exact: true }" class="nav-link">
+        Manage Contact
+      </a>
+
+    </nav>
+
+    <div class="mt-auto"></div>
+
+    <button class="btn logout-btn mt-3" (click)="logout()">
+      Logout
+    </button>
+
+  </div>
+
+  <div class="content flex-grow-1 p-3">
+    <router-outlet></router-outlet>
+  </div>
+
+</div>

@@ -1,0 +1,66 @@
+<div class="container-fluid mt-4">
+  <div class="row">
+    <div class="col-lg-10">
+
+      <!-- Top Controls -->
+      <div class="card p-3 mb-4 shadow-sm">
+
+        <div class="d-flex justify-content-between align-items-center">
+
+          <div class="btn-group">
+            <button class="btn btn-outline-dark" (click)="filterStatus('All')">All</button>
+            <button class="btn btn-outline-primary" (click)="filterStatus('New')">New</button>
+            <button class="btn btn-outline-success" (click)="filterStatus('Accepted')">Accepted</button>
+            <button class="btn btn-outline-danger" (click)="filterStatus('Rejected')">Rejected</button>
+          </div>
+
+          <input type="text" class="form-control w-25"
+            placeholder="Search..."
+            [(ngModel)]="searchText"
+            (input)="applyFilter()">
+
+        </div>
+
+      </div>
+
+      <!-- Table -->
+      <table class="table table-bordered table-hover">
+        <thead class="table-light">
+          <tr>
+            <th>Sl.No</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Message</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <tr *ngFor="let c of filteredContacts(); let i = index">
+            <td>{{i + 1}}</td>
+            <td>{{c.name}}</td>
+            <td>{{c.email}}</td>
+            <td>{{c.phone}}</td>
+            <td>{{c.message}}</td>
+
+            <td>
+              <button *ngIf="c.status=='New'" (click)="accept(c._id)" style="color:green">✔</button>
+              <button *ngIf="c.status=='New'" (click)="reject(c)" style="color:red">✖</button>
+
+              <span *ngIf="c.status=='Accepted'" style="color:green;font-weight:bold;">✔ Accepted</span>
+              <span *ngIf="c.status=='Rejected'" style="color:red;font-weight:bold;">✖ Rejected</span>
+            </td>
+          </tr>
+
+          <tr *ngIf="contacts().length === 0">
+            <td colspan="6" class="text-center">No contacts found</td>
+          </tr>
+
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>
