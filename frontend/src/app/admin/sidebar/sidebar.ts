@@ -9,6 +9,7 @@ import { AuthService } from '../../services/auth.services';
   templateUrl: './sidebar.html',
   styleUrls: ['./sidebar.css'],
 })
+
 export class Sidebar {
 
   loading: boolean = false;

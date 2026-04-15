@@ -10,14 +10,12 @@ import { ContactList } from "./admin/contact-list/contact-list";
 import { Pnf } from "./pnf/pnf";
 import { Sidebar } from "./admin/sidebar/sidebar";
 import { AuthGuard } from "./guards/auth-guard";
-
 export const routes: Routes = [
 
   { path: "", redirectTo: "login", pathMatch: "full" },
 
   { path: "login", component: Login },
   { path: "register", component: Register },
-
   { path: "home", component: Home, canActivate: [AuthGuard] },
 
   { path: 'forgot-password', component: ForgotPage },

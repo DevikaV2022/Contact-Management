@@ -38,6 +38,7 @@ export class Home {
     });
   }
 
+
   ngOnInit() {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
     this.username = user?.name || 'User';
