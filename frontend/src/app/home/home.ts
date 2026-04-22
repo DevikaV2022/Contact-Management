@@ -44,9 +44,23 @@ export class Home {
     this.username = user?.name || 'User';
   }
 
-  logout() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    window.location.href = '/login';
-  }
+   showLogoutModal: boolean = false;
+ 
+ 
+   openLogoutModal() {
+     this.showLogoutModal = true;
+   }
+ 
+   closeLogoutModal() {
+     this.showLogoutModal = false;
+   }
+   
+   confirmLogout() {
+     this.showLogoutModal = false;
+ 
+     localStorage.removeItem('token');
+     localStorage.removeItem('user');
+ 
+     this.router.navigate(['/login']);
+   }
 }

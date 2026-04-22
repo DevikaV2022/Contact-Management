@@ -1,13 +1,11 @@
 // import the usermodel
 const users = require("../models/userModel")
 const bcrypt = require("bcryptjs")
-const jwt = require("jsonwebtoken")
 const crypto = require("crypto")
 const nodemailer = require("nodemailer")
 
 // Register
 exports.registerController = async (req, res) => {
-    console.log("Inside Registercontroller");
 
     const { username, email, password, role } = req.body
     console.log("Original Password:", password);
@@ -22,16 +20,7 @@ exports.registerController = async (req, res) => {
         }
         else {
 
-            const encryptedPassword = await bcrypt.hash(password.trim(), 10);
-            console.log(encryptedPassword)
-            console.log({
-                username,
-                email: lowerEmail,
-                password: encryptedPassword,
-                role: role || "user"
-            });
-
-        
+            const encryptedPassword = await bcrypt.hash(password.trim(), 10);        
             const newUser = await users.create(
                 {
                     username,
@@ -73,10 +62,8 @@ exports.forgotPassword = async (req, res) => {
         const transporter = nodemailer.createTransport({
             service: "gmail",
             auth: {
-                // user: process.env.EMAIL.trim(),
-                user: "devika15524@gmail.com",
-                // pass: process.env.EMAIL_PASSWORD.trim()
-                pass: "pofm lniq rabo wrja"
+                user: process.env.EMAIL.trim(),
+                pass: process.env.EMAIL_PASSWORD.trim()
             }
         })
 

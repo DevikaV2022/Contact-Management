@@ -5,24 +5,26 @@
 
     <!-- Profile Section -->
     <div class="profile text-center">
-      <img src="https://i.pinimg.com/736x/b4/1f/f4/b41ff478e42e31fd71584d9dae338ffa.jpg"
-           alt="admin-profile"
-           class="profile-img">
+      <img src="https://i.pinimg.com/736x/b4/1f/f4/b41ff478e42e31fd71584d9dae338ffa.jpg" alt="admin-profile"
+        class="profile-img">
       <h5 class="mt-2">Admin</h5>
     </div>
 
     <!-- Menu -->
     <nav class="nav flex-column mt-4">
 
-      <a routerLink="/admin/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link">
+      <a routerLink="/admin/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
+        class="nav-link">
         Dashboard
       </a>
 
-      <a routerLink="/admin/contact-list" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link">
+      <a routerLink="/admin/contact-list" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
+        class="nav-link">
         Contact List
       </a>
 
-      <a routerLink="/admin/manage-contact" routerLinkActive="active"  [routerLinkActiveOptions]="{ exact: true }" class="nav-link">
+      <a routerLink="/admin/manage-contact" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
+        class="nav-link">
         Manage Contact
       </a>
 
@@ -30,9 +32,46 @@
 
     <div class="mt-auto"></div>
 
-    <button class="btn logout-btn mt-3" (click)="logout()">
+    <!-- Logout Button -->
+    <button class=" logout-btn mt-3" (click)="openLogoutModal()">
       Logout
     </button>
+
+    <!-- Bootstrap Modal -->
+    @if (showLogoutModal) {
+    <div class="modal fade show d-block" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content shadow-lg border-0 rounded-4">
+
+          <!-- Header -->
+          <div class="modal-header bg-success text-white rounded-top-4">
+            <h5 class="modal-title">Confirm Logout</h5>
+            <button type="button" class="btn-close btn-close-white" (click)="closeLogoutModal()"></button>
+          </div>
+
+          <!-- Body -->
+          <div class="modal-body text-center">
+            <i class="bi bi-box-arrow-right fs-1 text-success"></i>
+            <p class="mt-3 mb-0">Are you sure you want to logout?</p>
+          </div>
+
+          <!-- Footer -->
+          <div class="modal-footer justify-content-center border-0">
+            <button class="btn btn-outline-secondary px-4" (click)="closeLogoutModal()">
+              Cancel
+            </button>
+            <button class="px-4 btn btn-success"  (click)="confirmLogout()">
+              Yes, Logout
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Backdrop -->
+    <div class="modal-backdrop fade show"></div>
+    }
 
   </div>
 

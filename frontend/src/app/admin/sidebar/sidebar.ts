@@ -14,12 +14,25 @@ export class Sidebar {
 
   loading: boolean = false;
 
+  showLogoutModal: boolean = false;
+
   constructor(private auth: AuthService, private router: Router) { }
 
-  logout() {
+  openLogoutModal() {
+    this.showLogoutModal = true;
+  }
+
+  closeLogoutModal() {
+    this.showLogoutModal = false;
+  }
+  
+  confirmLogout() {
+    this.showLogoutModal = false;
+
     localStorage.removeItem('token');
     localStorage.removeItem('user');
-    window.location.href = '/login';
+
+    this.router.navigate(['/login']);
   }
 
 }

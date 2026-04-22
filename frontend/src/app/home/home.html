@@ -6,9 +6,48 @@
 
     <div>
       <span class="me-3">Hello, {{username}}</span>
-      <!-- logout button -->
-      <button class="btn logout-btn" (click)="logout()">Logout</button>
+
+      <!-- Logout Button -->
+      <button class=" logout-btn mt-3" (click)="openLogoutModal()">
+        Logout
+      </button>
+      <!-- Bootstrap Modal -->
+      @if (showLogoutModal) {
+      <div class="modal fade show d-block" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content shadow-lg border-0 rounded-4">
+
+            <!-- Header -->
+            <div class="modal-header bg-success text-white rounded-top-4">
+              <h5 class="modal-title">Confirm Logout</h5>
+              <button type="button" class="btn-close btn-close-white" (click)="closeLogoutModal()"></button>
+            </div>
+
+            <!-- Body -->
+            <div class="modal-body text-center">
+              <i class="bi bi-box-arrow-right fs-1 text-success"></i>
+              <p class="mt-3 mb-0">Are you sure you want to logout?</p>
+            </div>
+
+            <!-- Footer -->
+            <div class="modal-footer justify-content-center border-0">
+              <button class="btn btn-outline-secondary px-4" (click)="closeLogoutModal()">
+                Cancel
+              </button>
+              <button class="px-4 btn btn-success" (click)="confirmLogout()">
+                Yes, Logout
+              </button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Backdrop OUTSIDE -->
+      <div class="modal-backdrop fade show"></div>
+      }
     </div>
+
   </header>
   <h1 class="welcome-text text-center p-5">Welcome to Home Page</h1>
 
@@ -44,7 +83,8 @@
             <div class="mb-3">
               <label class="form-label">Email</label>
               <input type="email" class="form-control" name="email" [(ngModel)]="formData.email" #email="ngModel"
-                (ngModelChange)="validateEmail()" pattern="^[^\s@]+@gmail\.com$" required  (keydown)="blockSpaces($event)"/>
+                (ngModelChange)="validateEmail()" pattern="^[^\s@]+@gmail\.com$" required
+                (keydown)="blockSpaces($event)" />
 
               <small class="text-danger" *ngIf="email.errors?.['required'] && email.touched">
                 Email is required
@@ -65,7 +105,7 @@
             <div class="mb-3">
               <label class="form-label">Phone Number</label>
               <input type="text" class="form-control" name="phone" [(ngModel)]="formData.phone" #phone="ngModel"
-                pattern="^[0-9]{10}$" required  (keydown)="blockSpaces($event)"/>
+                pattern="^[0-9]{10}$" required (keydown)="blockSpaces($event)" />
 
               <small class="text-danger" *ngIf="phone.errors?.['required'] && phone.touched">
                 Phone number is required
