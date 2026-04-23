@@ -128,6 +128,18 @@
               Submit
             </button>
 
+            @if(successMessage){
+            <div class="position-fixed top-0 start-0 w-100 h-100 d-flex justify-content-center align-items-center"
+              style="background: rgba(0,0,0,0.3); z-index:999;">
+
+              <div class="bg-white p-4 rounded text-center">
+                <h5 class="text-success">Success</h5>
+                <p>{{successMessage}}</p>
+                <button class="btn btn-success" (click)="successMessage=''">OK</button>
+              </div>
+            </div>
+            }
+            
           </form>
         </div>
 

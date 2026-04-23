@@ -8,9 +8,7 @@ const nodemailer = require("nodemailer")
 exports.registerController = async (req, res) => {
 
     const { username, email, password, role } = req.body
-    console.log("Original Password:", password);
     const trimPassword = password.trim()
-    console.log("Trimmed Password:", trimPassword);
     const lowerEmail = email.trim().toLowerCase()
 
     try {
@@ -30,7 +28,6 @@ exports.registerController = async (req, res) => {
                 }
             );
 
-            console.log(newUser)
 
             res.status(200).json({
                 message: "Registered successfully",

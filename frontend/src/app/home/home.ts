@@ -14,6 +14,8 @@ export class Home {
   formData = { name: '', email: '', phone: '', message: '' };
   emailSpaceError = false;
   username: string = '';
+  successMessage: string = "";
+  apiError: string = "";
 
   constructor(private api: Api, private router: Router) { }
 
@@ -27,8 +29,8 @@ export class Home {
 
   onSubmit() {
     this.api.submitContact(this.formData).subscribe({
-      next: (res: any) => {
-        alert("Submitted successfully");
+      next: () => {
+        this.successMessage = "Submitted successfully";
         this.formData = { name: '', email: '', phone: '', message: '' };
       },
       error: (err: any) => {
@@ -40,27 +42,27 @@ export class Home {
 
 
   ngOnInit() {
-    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    const user = JSON.parse(sessionStorage.getItem('user') || '{}');
     this.username = user?.name || 'User';
   }
 
-   showLogoutModal: boolean = false;
- 
- 
-   openLogoutModal() {
-     this.showLogoutModal = true;
-   }
- 
-   closeLogoutModal() {
-     this.showLogoutModal = false;
-   }
-   
-   confirmLogout() {
-     this.showLogoutModal = false;
- 
-     localStorage.removeItem('token');
-     localStorage.removeItem('user');
- 
-     this.router.navigate(['/login']);
-   }
+  showLogoutModal: boolean = false;
+
+
+  openLogoutModal() {
+    this.showLogoutModal = true;
+  }
+
+  closeLogoutModal() {
+    this.showLogoutModal = false;
+  }
+
+  confirmLogout() {
+    this.showLogoutModal = false;
+
+    sessionStorage.removeItem('token');
+    sessionStorage.removeItem('user');
+
+    this.router.navigate(['/login']);
+  }
 }

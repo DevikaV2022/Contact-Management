@@ -1,7 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const Contact = require('../models/contactModel')
-
 const { 
   addContactController,
   getContactsController,
@@ -10,39 +8,6 @@ const {
   updateContactStatus,
   deleteContact,
 } = require('../controllers/contactController');
-
-
-
-
-// // Delete contact
-// router.delete('/:id', async (req, res) => {
-//   try {
-//     await Contact.findByIdAndDelete(req.params.id);
-//     res.status(200).json({ message: 'Deleted' });
-//   } catch (err) {
-//     console.error(err);
-//     res.status(500).json({ error: err.message });
-//   }
-// });
-
-router.get('/all-contacts', async (req, res) => {
-  const contacts = await Contact.find({});
-  res.json(contacts);
-});
-
-
-// pending contacts
-router.get('/pending', async (req, res) => {
-  const data = await Contact.find({ status: "New" });
-  res.json(data);
-});
-
-// accepted contacts
-router.get('/accepted', async (req, res) => {
-  const data = await Contact.find({ status: "Accepted" });
-  res.json(data);
-});
-
 
 router.post('/add-contact', addContactController);
 router.get('/all-contacts', getContactsController);

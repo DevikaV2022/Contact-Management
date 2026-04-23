@@ -7,6 +7,12 @@
             <h2 class="fw-bold mt-2" style="color:#1f8a5b;">Register</h2>
         </div>
 
+        @if(successMessage){
+        <div class="alert alert-success text-center">
+            {{successMessage}}
+        </div>
+        }
+
         <form [formGroup]="registerForm" (ngSubmit)="register()">
 
             <!-- NAME -->
@@ -19,7 +25,8 @@
             }
 
             <div class="mb-3">
-                <input type="email" formControlName="email" class="form-control" placeholder="Enter your email" (keydown)="blockSpaces($event)" >
+                <input type="email" formControlName="email" class="form-control" placeholder="Enter your email"
+                    (keydown)="blockSpaces($event)">
             </div>
 
             @if(registerForm.get("email")?.errors && registerForm.get("email")?.touched){
@@ -43,9 +50,27 @@
             <div class="text-danger mb-2">Password must be at least 6 characters</div>
             }
 
+            <!-- ROLE -->
+            <div class="mb-3">
+                <select formControlName="role" class="form-control">
+                    <option value="">Select Role</option>
+                    <option value="user">User</option>
+                    <option value="admin">Admin</option>
+                </select>
+            </div>
+
+            @if(registerForm.get("role")?.touched && registerForm.get("role")?.invalid){
+            <div class="text-danger mb-2">Role is required</div>
+            }
+
             <button type="submit" class="btn w-100 mt-2" style="background-color:#1f8a5b; color:white;">
                 Register
             </button>
+            @if(apiError){
+            <div class="alert alert-danger text-center mt-2">
+                {{apiError}}
+            </div>
+            }
 
         </form>
 

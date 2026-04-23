@@ -29,8 +29,8 @@ export class Sidebar {
   confirmLogout() {
     this.showLogoutModal = false;
 
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
+    sessionStorage.removeItem('token');
+    sessionStorage.removeItem('user');
 
     this.router.navigate(['/login']);
   }

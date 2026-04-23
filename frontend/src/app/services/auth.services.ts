@@ -18,8 +18,8 @@ export class AuthService {
   }
 
   login(token: string, user: any) {
-    localStorage.setItem('token', token);
-    localStorage.setItem('user', JSON.stringify(user));
+    sessionStorage.setItem('token', token);
+    sessionStorage.setItem('user', JSON.stringify(user));
   }
 
   logout() {

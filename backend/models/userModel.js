@@ -1,5 +1,3 @@
-//structure of user data. MongoDB will store data like:JSON 
-const bcrypt = require("bcryptjs");
 // import the mongoose
 const mongoose = require("mongoose")
 
